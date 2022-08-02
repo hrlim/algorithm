@@ -13,7 +13,7 @@ import java.io.InputStreamReader;
  * @version 1.0, 2022.08.02
  */
 
-public class Solution_1954_임하림 {
+public class Solution_1954 {
 
 	// 0 : 오른쪽, 1 : 아래, 2 : 왼쪽 , 3 : 위
 	public static final int[] dx = { 0, 1, 0, -1 };

@@ -13,7 +13,7 @@ import java.util.StringTokenizer;
  * @version 1.0, 2022.08.02
  */
 
-public class Solution_1210_임하림 {
+public class Solution_1210 {
 
 	public static int[][] dirs2 = { { 0, 1 }, { 0, -1 } };
 
