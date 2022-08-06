@@ -1,3 +1,4 @@
+package build;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -10,7 +11,7 @@ import java.util.StringTokenizer;
  * @author hrlim
  * @version 1.0, 2022.08.05
  */
-public class Main_2023_임하림 {
+public class Main_12891 {
 
 	public static int[] pivot;
 
