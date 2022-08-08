@@ -1,3 +1,4 @@
+package perm;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -37,6 +38,7 @@ public class Main_2023 {
 
 		// long endTime = System.currentTimeMillis() - startTime;
 		// System.out.println(endTime + " 시간 걸립니다.");
+		
 		bw.write(sb.toString());
 		bw.flush();
 		bw.close();
