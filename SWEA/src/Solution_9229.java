@@ -6,7 +6,7 @@ import java.util.StringTokenizer;
  * @author hrlim
  * @version 1.0, 2022.08.08
  */
-public class Solution_9229_임하림 {
+public class Solution_9229 {
 	
 	static int maxSum;
 	static int chooseMaxNum = 2;
