@@ -10,20 +10,19 @@ import java.util.StringTokenizer;
  * @version 1.0, 2022.08.10
  *
  */
-public class Main_17406_임하림 {
+public class Main_17406 {
 
 	static int N, M, R;
 	static int P;
 	static int[][] arr;
 	static int[][] copy;
-	static boolean[][] visited;
 	static Rotation[] command;
 
 	// 하 우 상 좌
 	public static int[] dr = { 1, 0, -1, 0 };
 	public static int[] dc = { 0, 1, 0, -1 };
 
-	public static int maxSum = Integer.MIN_VALUE;
+	public static int minSum = Integer.MAX_VALUE;
 
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
@@ -39,7 +38,6 @@ public class Main_17406_임하림 {
 		R = Integer.parseInt(st.nextToken());
 
 		arr = new int[N][M];
-		visited = new boolean[N][M];
 
 		// 배열 정보 입력
 		for (int i = 0; i < N; i++) {
@@ -62,20 +60,13 @@ public class Main_17406_임하림 {
 
 		perm(new int[R], new boolean[R], 0);
 
-		int cnt = Math.min(N, M) / 2;
-
-//		for (int i = 0; i < cnt; i++) {
-//			P = i;
-//			rotate(i, i, 1, );
-//		}
-
 		for (int[] a : arr) {
 			for (int el : a) {
 				sb.append(el + " ");
 			}
 			sb.append("\n");
 		}
-		System.out.println(sb);
+		System.out.println(minSum);
 	}
 
 	private static void perm(int[] output, boolean[] isSelected, int cnt) {
@@ -97,11 +88,7 @@ public class Main_17406_임하림 {
 
 		for (int i = 0; i < output.length; i++) {
 			Rotation tmp = command[output[i]];
-			int x = tmp.x;
-			int y = tmp.y;
-			int rCnt = tmp.rCnt;
-
-			rotate(x - 1, y - 1, tmp.rCnt);
+			rotate(tmp.x - 1, tmp.y - 1, tmp.rCnt);
 		}
 
 		for (int i = 0; i < copy.length; i++) {
@@ -109,13 +96,12 @@ public class Main_17406_임하림 {
 			for (int j = 0; j < copy[i].length; j++) {
 				sum += copy[i][j];
 			}
-			if (sum > maxSum) {
-				maxSum = sum;
+			if (sum < minSum) {
+				minSum = sum;
 			}
 		}
 
 		copy = deepCopy(arr);
-		visited = new boolean[N][M];
 	}
 
 	private static void rotate(int r, int c, int rnum) {
@@ -131,7 +117,7 @@ public class Main_17406_임하림 {
 			nc = startC + dc[dir];
 
 			// 경계를 벗어났거나, 테두리의 값인지? 방향전환
-			if (nr < r - rnum || nr >= r + rnum || nc < c - rnum || nc >= c + rnum || visited[nr][nc]) {
+			if (nr < r - rnum || nr > r + rnum || nc < c - rnum || nc > c + rnum) {
 				dir = ++dir % 4;
 				nr = startR + dr[dir]; // 방향전환된 위치를 다시 셋팅 필요
 				nc = startC + dc[dir];
@@ -141,25 +127,23 @@ public class Main_17406_임하림 {
 			startR = nr;
 			startC = nc;
 
-			visited[startR][startC] = true;
-
-			if (r == startR && c == startC) {
-				copy[P + 1][P] = start;
+			if (r - rnum == startR && c - rnum == startC) {
+				copy[startR][startC + 1] = start;
 				break;
 			}
 		}
-		if (rnum > 0)
+		if (rnum > 1)
 			rotate(r, c, rnum - 1);
 
 	}
 
-	private static int[][] deepCopy(int[][] original2) {
-		if (original2 == null)
+	private static int[][] deepCopy(int[][] original) {
+		if (original == null)
 			return null;
-		int[][] result = new int[original2.length][original2[0].length];
+		int[][] result = new int[original.length][original[0].length];
 
-		for (int i = 0; i < original2.length; i++) {
-			System.arraycopy(original2[i], 0, result[i], 0, original2[0].length);
+		for (int i = 0; i < original.length; i++) {
+			System.arraycopy(original[i], 0, result[i], 0, original[0].length);
 		}
 
 		return result;

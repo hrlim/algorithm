@@ -7,7 +7,7 @@ import java.util.StringTokenizer;
  * @author hrlim
  * @version 1.0, 2022.08.08
  */
-public class Solution_1861_임하림 {
+public class Solution_1861 {
 
 	// 상 우 하 좌
 	public static final int[] dx = { -1, 0, 1, 0 };

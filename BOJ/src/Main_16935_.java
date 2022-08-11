@@ -2,7 +2,15 @@ import java.io.*;
 import java.util.Iterator;
 import java.util.StringTokenizer;
 
-public class Main_16935_임하림 {
+/**
+ * 배열 돌리기 3
+ * 
+ * @author hrlim
+ * @version 1.0, 2022.08.10
+ *
+ */
+
+public class Main_16935_ {
 
 	public static int N, M;
 	public static int[][] result;
@@ -36,10 +44,14 @@ public class Main_16935_임하림 {
 
 		for (int i = 0; i < result.length; i++) {
 			for (int j = 0; j < result[i].length; j++) {
-				System.out.print(result[i][j] + " ");
+				sb.append(result[i][j] + " ");
 			}
-			System.out.println();
+			sb.append("\n");
 		}
+		bw.write(sb.toString());
+		bw.flush();
+		bw.close();
+		br.close();
 	}
 
 	static int[][] selectMode(int mode, int[][] map) {
