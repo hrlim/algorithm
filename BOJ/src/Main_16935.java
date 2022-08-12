@@ -10,7 +10,7 @@ import java.util.StringTokenizer;
  *
  */
 
-public class Main_16935_ {
+public class Main_16935 {
 
 	public static int N, M;
 	public static int[][] result;

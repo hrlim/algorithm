@@ -4,7 +4,7 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 /**
- * 배열 돌리기 3
+ * 배열 돌리기 4
  * 
  * @author hrlim
  * @version 1.0, 2022.08.10
