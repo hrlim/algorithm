@@ -5,6 +5,12 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.Stack;
 
+/**
+ * [S/W 문제해결 기본] 4일차 - 괄호 짝짓기
+ * 
+ * @author hrlim
+ * @version 1.0, 2022.08.04
+ */
 public class Solution_1218_STACK {
 
 	public static void main(String[] args) throws NumberFormatException, IOException {
