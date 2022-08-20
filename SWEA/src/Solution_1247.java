@@ -3,8 +3,9 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.util.Arrays;
 import java.util.StringTokenizer;
+
+import util.Coordinate;
 
 /**
  * [S/W 문제해결 응용] 3일차 - 최적 경로
@@ -14,19 +15,7 @@ import java.util.StringTokenizer;
  *
  */
 
-//class Coordinate {
-//	int row;
-//	int col;
-//
-//	public Coordinate(int row, int col) {
-//		super();
-//		this.row = row;
-//		this.col = col;
-//	}
-//
-//}
-
-public class Solution_1247_임하림 {
+public class Solution_1247 {
 
 	private static int minRoot = Integer.MAX_VALUE;
 
@@ -76,8 +65,8 @@ public class Solution_1247_임하림 {
 		for (int i = 0; i < customer.length; i++) {
 			if ((flag & 1 << i) != 0)
 				continue;
-			distance += getDistance(startRow, startCol, customer[i].row, customer[i].col);
-			perm(customer[i].row, customer[i].col, cnt + 1, distance, flag | 1 << i);
+			perm(customer[i].row, customer[i].col, cnt + 1,
+					distance + getDistance(startRow, startCol, customer[i].row, customer[i].col), flag | 1 << i);
 
 		}
 	}

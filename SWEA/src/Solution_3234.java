@@ -14,7 +14,7 @@ import java.util.StringTokenizer;
  * @author hrlim
  * @version 1.0, 2022.08.19
  */
-public class Solution_3234_임하림 {
+public class Solution_3234 {
 
 	public static int answer;
 	public static Integer[] weights;
