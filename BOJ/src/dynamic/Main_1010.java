@@ -1,3 +1,4 @@
+package dynamic;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -6,7 +7,8 @@ import java.io.OutputStreamWriter;
 import java.util.StringTokenizer;
 
 /**
- * 다리 놓기
+ * BOJ 1010 다리 놓기 - 실버 5
+ * <b>수학, DP, 조합론</b>
  * 
  * @author hrlim
  * @version 1.0, 2022.08.10

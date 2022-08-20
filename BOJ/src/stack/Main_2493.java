@@ -8,8 +8,8 @@ import java.util.Stack;
 import java.util.StringTokenizer;
 
 /**
- * 
- * BOJ 2493 탑
+ * BOJ 2493 탑 - 골드 5
+ * <b>자료구조, 스택</b>
  * 
  * @author hrlim
  * @version 1.0, 2022.08.05
@@ -58,11 +58,23 @@ public class Main_2493 {
 
 	}
 
+	/**
+	 * 문자형 타입을 숫자형 타입으로 변환해주는 메서드
+	 * 
+	 * @param s
+	 * @return
+	 */
 	public static int stringToInt(String s) {
 		return Integer.parseInt(s);
 	}
 }
 
+/**
+ * 송전탑의 위치와 높이를 가지는 클래스
+ * 
+ * @author hrlim
+ * @version 1.0, 2022.08.05
+ */
 class Top {
 	int index;
 	int height;

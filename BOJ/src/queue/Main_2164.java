@@ -27,6 +27,12 @@ public class Main_2164 {
         
     }
 
+	/**
+	 * 문자형 타입을 숫자형 타입으로 변환해주는 메서드
+	 * 
+	 * @param s
+	 * @return
+	 */
     static int stringToInt(String s) {
         return Integer.parseInt(s);
     }

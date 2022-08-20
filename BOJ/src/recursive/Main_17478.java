@@ -3,7 +3,8 @@ import java.util.Scanner;
 
 /**
  * 
- * BOJ 17478 재귀함수가 뭔가요?
+ * BOJ 17478 재귀함수가 뭔가요? - 실버 5
+ * <b>구현, 재귀</b>
  * 
  * @author hrlim
  * @version 1.0, 2022.08.01
@@ -22,6 +23,10 @@ public class Main_17478 {
 		System.out.println(sb);
 	}
 
+	/**
+	 * @param N		반복횟수
+	 * @param tap	반복할 때마다 들여쓰기
+	 */
 	static void recursive(int N, String tap) {
 		sb.append(tap).append("\"재귀함수가 뭔가요?\"\n");
 		if (N == 0) {

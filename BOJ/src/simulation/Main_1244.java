@@ -6,7 +6,8 @@ import java.util.StringTokenizer;
 
 /**
  * 
- * BOJ 1244 스위치 켜고 끄기
+ * BOJ 1244 스위치 켜고 끄기 - 실버 3
+ * <b> 구현, 시물레이션 </b>
  * 
  * @author hrlim
  * @version 1.0, 2022.08.01
@@ -20,6 +21,7 @@ public class Main_1244 {
 
 		int[] arr = new int[N + 1];
 		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+		
 		int size = st.countTokens();
 		for (int j = 1; j <= size; j++) {
 			arr[j] = Integer.parseInt(st.nextToken());
@@ -52,6 +54,7 @@ public class Main_1244 {
 				}
 			}
 		}
+		
 		StringBuilder sb = new StringBuilder();
 
 		// 한 줄에 20개씩 출력
