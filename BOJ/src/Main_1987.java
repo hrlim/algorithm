@@ -6,21 +6,20 @@ import java.io.OutputStreamWriter;
 import java.util.StringTokenizer;
 
 /**
- * 빵집
+ * 알파벳
  * 
  * @author hrlim
- * @version 1.0, 2022.08.18
+ * @version 1.0, 2022.08.19
  *
  */
-public class Main_3109 {
+public class Main_1987 {
 
 	public static int R, C;
 
-	// 오른쪽대각선위, 오른쪽, 오른쪽대각선아래
-	// 방향 순서가 중요 ! 
-	public static int[][] dir3 = {{ -1, 1 }, { 0, 1 }, { 1, 1 }};
-
-	public static char[][] map;
+	// 상, 우, 하, 좌
+	public static int[][] dir4 = { { -1, 0 }, { 0, 1 }, { 1, 0 }, { 0, -1 } };
+	public static boolean[] alpha = new boolean[26];
+	public static int[][] map;
 	public static int answer;
 
 	public static void main(String[] args) throws IOException {
@@ -33,14 +32,15 @@ public class Main_3109 {
 		R = stringToInt(st.nextToken());
 		C = stringToInt(st.nextToken());
 
-		map = new char[R][C];
+		map = new int[R][C];
 		for (int i = 0; i < R; i++) {
-			map[i] = br.readLine().toCharArray();
+			String str = br.readLine();
+			for (int j = 0; j < C; j++) {
+				map[i][j] = str.charAt(j) - 'A';
+			}
 		}
 
-		for (int i = 0; i < R ; i++) {
-			dfs(i, 0);
-		}
+		dfs(0, 0, 0);
 
 		sb.append(answer);
 		bw.write(sb.toString());
@@ -49,23 +49,25 @@ public class Main_3109 {
 		br.close();
 	}
 
-	static boolean dfs(int row, int col) {
-
-		if (col == C - 1) {
-			answer++;
-			return true;
+	static void dfs(int row, int col, int cnt) {
+		
+		if(alpha[map[row][col]]) {
+			answer = Math.max(answer, cnt);
+			return;
 		}
+		
+		alpha[map[row][col]] = true;
+		
+		for (int i = 0; i < dir4.length; i++) {
+			int dRow = row + dir4[i][0];
+			int dCol = col + dir4[i][1];
 
-		for (int i = 0; i < dir3.length; i++) {
-			int dRow = row + dir3[i][0];
-			int dCol = col + dir3[i][1];
-
-			if (isRange(dRow, dCol) && map[dRow][dCol] == '.') {
-				map[dRow][dCol] = '-';
-				if (dfs(dRow, dCol)) return true;
+			if (isRange(dRow, dCol)) {
+				dfs(dRow, dCol, cnt + 1);
 			}
 		}
-		return false;
+		
+		alpha[map[row][col]] = false;
 	}
 
 	static int stringToInt(String s) {
