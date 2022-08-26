@@ -169,7 +169,7 @@ public class Solution_낚시터자리잡기 {
 		leftDiff = gate - left;
 		rightDiff = right - gate;
 		
-		// 양 쪽에 넣을 수 배정할 수 있는 거리가 동일한 경우
+		// 양 쪽에 넣을 수 (배정할 수) 있는 거리가 동일한 경우
 		if (leftDiff == rightDiff) {
 			// 왼쪽 기준
 			if (flag == 0) {
