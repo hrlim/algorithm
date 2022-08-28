@@ -44,28 +44,28 @@ public class Main_3055 {
 		map = new char[R][C];
 		
 		Coordinate start = null;
-		List<Coordinate> stonePos = new ArrayList<>();
+		List<Coordinate> waterPos = new ArrayList<>();
 
 		for (int i = 0; i < R; i++) {
 			String s = br.readLine();
 			for (int j = 0; j < C; j++) {
 				map[i][j] = s.charAt(j);
 				if (map[i][j] == 'S') start = new Coordinate(i, j, 'S');
-				else if (map[i][j] == '*') stonePos.add(new Coordinate(i, j, '*'));
+				else if (map[i][j] == '*') waterPos.add(new Coordinate(i, j, '*'));
 			}
 		}
 		
-		System.out.println(bfs(start, stonePos));
+		System.out.println(bfs(start, waterPos));
 	}
 
-	static Object bfs(Coordinate start, List<Coordinate> stones) {
+	static Object bfs(Coordinate start, List<Coordinate> waters) {
 		Queue<Coordinate> queue = new ArrayDeque<>();
 		// 방문순서를 확인하기 위함
 		int[][] visited = new int[R][C];
 
-		for (Coordinate stone : stones) {
-			queue.offer(stone);
-			visited[stone.row][stone.col] = 1;
+		for (Coordinate water : waters) {
+			queue.offer(water);
+			visited[water.row][water.col] = 1;
 		}
 
 		queue.offer(start);
