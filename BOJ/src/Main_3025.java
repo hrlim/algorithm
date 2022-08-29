@@ -13,7 +13,7 @@ public class Main_3025 {
 	static int[] availRows; // 해당 가늫한 행의 높이를 빠르게 적용하기 위한 변수
 							// 인덱스는 해당열을 의미하고, 값은 가능한 행의 높이를 의미
 	static int[] stones; // 돌의 위치 정보
-							// 인덱스는 해당열을 의미하고, 돌의 위치(행의 위치가 가장 작은) 를 의미
+						 // 인덱스는 해당열을 의미하고, 돌의 위치(행의 위치가 가장 작은) 를 의미
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); // 입력을 받기 위함
@@ -72,48 +72,50 @@ public class Main_3025 {
 
 	}
 
-	static void dropRock(int row, int col) {
+	static boolean dropRock(int row, int col) {
 
-		if (!isRange(row, col))
-			return;
+		if (!isRange(row, col)) return false;
 
 		if (row == R - 1) {
 			map[row][col] = 'O';
 			changeAvailRow(col);
-			return;
+			return true;
 		}
 
-		if (row + 1 < R && map[row + 1][col] == 'X') {
-			map[row][col] = 'O';
-			if(stones[col] - 1 == availRows[col]) availRows[col] -= 1;
-			stones[col] -= 1;
-			return;
+		int dRow = row, dCol = col;
+		while(true) {
+			
+			if (dRow + 1 < R && map[dRow + 1][dCol] == 'X') {
+				stones[dCol] -= 1;
+				break;
+			}
+			
+			else if (isRange(dRow, dCol - 1) && map[dRow][dCol - 1] == '.'
+					&& isRange(dRow + 1, dCol - 1) && map[dRow + 1][dCol - 1] == '.') {
+				dCol--;
+			} 
+			// 오른쪽 가능한지 확인
+			else if (isRange(dRow, dCol + 1) && map[dRow][dCol + 1] == '.' 
+					&& isRange(dRow + 1, dCol + 1) && map[dRow + 1][dCol + 1] == '.') {
+				dCol++;
+			}
+			else break;
+			dRow = availRows[dCol];
 		}
 
-		// 왼쪽 가능한지 확인
-		if (isRange(row, col - 1) && map[row][col - 1] == '.'
-				&& isRange(row + 1, col - 1) && map[row + 1][col - 1] == '.') {
-			dropRock(availRows[col - 1], col - 1);
-		}
-
-		// 오른쪽 가능한지 확인
-		else if (isRange(row, col + 1) && map[row][col + 1] == '.' 
-				&& isRange(row + 1, col + 1) && map[row + 1][col + 1] == '.') {
-			dropRock(availRows[col + 1], col + 1);
-		}
-
-		// 둘 다 불가능할 경우
-		else {
-			map[row][col] = 'O';
-			changeAvailRow(col);
-			return;
-		}
+		map[dRow][dCol] = 'O';
+		changeAvailRow(dCol);
+		return true;
+		
 	}
 
 	static void changeAvailRow(int col) {
 		if (stones[col] != -1 && isRange(availRows[col] - 2, col) && map[availRows[col] - 2][col] == 'X') {
 			availRows[col] = stones[col] - 1;
-		} else {
+		} else if(stones[col] == availRows[col]) {
+			availRows[col] -= 1;
+		}
+	    else {
 			availRows[col] -= 1;
 		}
 	}
