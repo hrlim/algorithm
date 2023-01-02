@@ -35,7 +35,7 @@ public class Q92335 {
 		String num = Integer.toString(n, k); // 십진수인 n 을 k 진수로 변환
 		String[] numArr = num.split("0");
 		for (String digit : numArr) {
-			if(num.isEmpty()) continue;
+			if(digit.isEmpty()) continue;
 			if(isPrime(Long.parseLong(digit))) {
 				answer++;
 			}
